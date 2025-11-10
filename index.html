@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <p>Attendance calculator chose the cut-off percentage as 75% or 65% or 50%</p>
+     <table>
+        <tr>
+            <td>Percentage-required</td>
+            <td>
+                <select id="percentage-required">
+                    <option value="75">75%</option>
+                    <option value="65">65%</option>
+                    <option value="50">50%</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Total classes held</td>
+            <td><input type="number" id="total-classes-held" value="0"></td>
+        </tr>
+        <tr>
+            <td>Classes attended</td>
+            <td><input type="number" id="classes-attended" value="0"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button>Calculate</button></td>
+        </tr>
+     </table>
+     <script>
+        document.querySelector("button").addEventListener("click", function() {
+            const required = parseFloat(document.getElementById("percentage-required").value);
+            const held = parseFloat(document.getElementById("total-classes-held").value);
+            const attended = parseFloat(document.getElementById("classes-attended").value);
+
+            if (held === 0) {
+                alert("Please enter total classes held.");
+                return;
+            }
+
+            const percentage = (attended / held) * 100;
+            let message = `Your current attendance is ${percentage.toFixed(2)}%.`;
+
+            if (percentage >= required) {
+                let bunk = Math.floor((attended * 100 / required) - held);
+                message += `\nYou can still miss ${bunk} classes and stay above ${required}%.`;
+            } else {
+                let need = 0;
+                while (((attended + need) / (held + need)) * 100 < required) {
+                    need++;
+                }
+                message += `\nYou need to attend ${need} more classes to reach ${required}%.`;
+            }
+
+            alert(message);
+        });
+    </script>
+
+</body>
+</html>

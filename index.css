@@ -1,0 +1,121 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(120deg, #89f7fe, #66a6ff);
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+p {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 25px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+
+table {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    padding: 25px 35px;
+    width: 420px;
+    border-collapse: collapse;
+    animation: slideUp 0.9s ease-out;
+}
+
+td {
+    padding: 12px;
+    font-size: 1rem;
+}
+
+td:first-child {
+    font-weight: 600;
+    color: #444;
+}
+
+
+select,
+input[type="number"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+select:focus,
+input:focus {
+    border-color: #66a6ff;
+    box-shadow: 0 0 10px rgba(102, 166, 255, 0.5);
+    transform: scale(1.03);
+    outline: none;
+}
+
+
+button {
+    background: linear-gradient(120deg, #66a6ff, #89f7fe);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(102, 166, 255, 0.4);
+}
+
+table tr:last-child td {
+    text-align: center;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 480px) {
+    table {
+        width: 90%;
+        padding: 20px;
+    }
+    p {
+        font-size: 1.1rem;
+    }
+}
